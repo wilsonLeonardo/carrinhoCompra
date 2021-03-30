@@ -1,6 +1,6 @@
 # Carrinho de compras
 
-- Projeto utilizando uma API Fake com o intuito de criar e adicionar produtos ao carrinho de compra
+- Projeto utilizando uma API Fake (MockAPI), com o intuito de criar e adicionar produtos ao carrinho de compra
 - ReactJS com TypeScript, Redux e Redux Saga
 
 
