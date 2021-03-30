@@ -15,4 +15,5 @@ export enum ProductTypes {
   ERROR = '@PRODUCTS/ERROR',
   REQUEST = '@PRODUCTS/REQUEST',
   NEW = '@PRODUCTS/NEW',
+  DELETE = '@PRODUCTS/DELETE',
 }

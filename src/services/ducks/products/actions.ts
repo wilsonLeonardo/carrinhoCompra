@@ -11,9 +11,12 @@ export const productsError = (stack: AxiosError) => action(ProductTypes.ERROR, {
 
 export const productsNew = (name: string, price: number) => action(ProductTypes.NEW, { name, price });
 
+export const productsDelete = (id: number) => action(ProductTypes.DELETE, { id });
+
 export type ProductActions = ActionType<{
   productsGet: typeof productsGet;
   productsError: typeof productsError;
   productsRequest: typeof productsRequest;
   productsNew: typeof productsNew;
+  productsDelete: typeof productsDelete;
 }>;

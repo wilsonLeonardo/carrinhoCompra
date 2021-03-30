@@ -36,6 +36,10 @@ export default function Orders({ products, dispatch, classes }) {
     dispatch(CartActions.cartAdd(data));
   }
 
+  function removeProduct(id) {
+    dispatch(ProductActions.productsDelete(id));
+  }
+
   function handleChangeValue(event) {
     setNew({ ...newProduct, [event.target.name]: event.target.value });
   }
@@ -135,12 +139,20 @@ export default function Orders({ products, dispatch, classes }) {
                 <TableCell>{row.name}</TableCell>
                 <TableCell align='center'>{toCurrency(row.price)}</TableCell>
                 <TableCell align='right'>
-                  <Button
+                <Button
                     variant='contained'
                     color='primary'
                     onClick={() => addToCart(row)}
                   >
-                    Add to cart
+                    + Buy
+                  </Button>
+                  &nbsp;
+                  <Button
+                    variant='contained'
+                    color='secondary'
+                    onClick={() => removeProduct(row.id)}
+                  >
+                   - Remove
                   </Button>
                 </TableCell>
               </TableRow>

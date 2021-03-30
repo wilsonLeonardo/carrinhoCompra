@@ -1,7 +1,7 @@
 import { AxiosInstance, AxiosError } from 'axios';
 import { call, put, getContext } from 'redux-saga/effects';
 
-import { productsGet, productsError, productsNew, productsRequest } from './actions';
+import { productsGet, productsError, productsNew, productsRequest, productsDelete } from './actions';
 
 export function* ProductSaga({ payload }: ReturnType<typeof productsGet>) {
   const api: AxiosInstance = yield getContext('api');
@@ -27,6 +27,22 @@ export function* NewProductSaga({ payload }: ReturnType<typeof productsNew>) {
       name: payload.name,
       price: payload.price,
     });
+
+    if (res && res.data) {
+      yield put(productsRequest());
+    }
+  } catch (error) {
+    if ((error as AxiosError).isAxiosError) {
+      yield put(productsError(error.response.data));
+    }
+  }
+}
+
+export function* DeleteProductSaga({ payload }: ReturnType<typeof productsDelete>) {
+  const api: AxiosInstance = yield getContext('api');
+  try {
+    console.log('aa');
+    const res = yield call(api.delete, `/Products/${payload.id}`);
 
     if (res && res.data) {
       yield put(productsRequest());
