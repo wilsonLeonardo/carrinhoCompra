@@ -1,3 +1,9 @@
+# Carrinho de compras
+
+- Projeto utilizando uma API Fake com o intuito de criar e adicionar produtos ao carrinho de compra
+- ReactJS com TypeScript, Redux e Redux Saga
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
