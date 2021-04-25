@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   TableRow,
   TableHead,
@@ -18,7 +18,19 @@ import { CartActions } from '../../services/ducks';
 
 import { toCurrency } from '../../utils/currency';
 
-export default function Orders({ products, total }) {
+interface Product {
+  id?: number;
+  name?: string;
+  qtd?: number;
+  price?: number;
+}
+
+interface OrderProps {
+  products: Product[];
+  total: number | undefined;
+}
+
+export default function Orders({ products, total }: OrderProps) {
   const [page, setPage] = useState(0);
   const dispatch = useDispatch();
 
@@ -32,7 +44,7 @@ export default function Orders({ products, total }) {
     dispatch(CartActions.cartRemove(data));
   }
   return (
-    <Fragment>
+    <>
       <div
         style={{
           flexDirection: 'row',
@@ -42,7 +54,7 @@ export default function Orders({ products, total }) {
         }}
       >
         <Title>Products in cart</Title>
-        <Typography>Total: {toCurrency(total)}</Typography>
+        <Typography>Total: {toCurrency(total || 0)}</Typography>
       </div>
 
       <Table size='medium'>
@@ -60,7 +72,7 @@ export default function Orders({ products, total }) {
             ?.map((row) => (
               <TableRow key={row.id}>
                 <TableCell>{row.name}</TableCell>
-                <TableCell>{toCurrency(row.price)}</TableCell>
+                <TableCell>{toCurrency(row.price || 0)}</TableCell>
                 <TableCell>{row.qtd}</TableCell>
                 <TableCell align='center'>
                   <Button
@@ -83,6 +95,6 @@ export default function Orders({ products, total }) {
         page={page}
         onChangePage={handleChangePage}
       />
-    </Fragment>
+    </>
   );
 }

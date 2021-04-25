@@ -28,7 +28,7 @@ export default function Products() {
   const state = useTypedSelector((state) => state);
   const cart = state.cart.data;
 
-  function totalPrice() {
+  function totalPrice():number | undefined {
     const soma = cart?.map((x) => {
       return x.price && x.qtd && x.price * x.qtd;
     });

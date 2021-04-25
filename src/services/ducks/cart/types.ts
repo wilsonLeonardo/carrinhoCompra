@@ -11,5 +11,5 @@ export interface CartState {
 
 export enum CartTypes {
   ADD = '@CART/ADD',
-  REMOVE = '@PRODUCTS/REMOVE',
+  REMOVE = '@CART/REMOVE',
 }

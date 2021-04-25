@@ -41,7 +41,6 @@ export function* NewProductSaga({ payload }: ReturnType<typeof productsNew>) {
 export function* DeleteProductSaga({ payload }: ReturnType<typeof productsDelete>) {
   const api: AxiosInstance = yield getContext('api');
   try {
-    console.log('aa');
     const res = yield call(api.delete, `/Products/${payload.id}`);
 
     if (res && res.data) {
